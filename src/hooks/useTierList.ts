@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import type { DragStartEvent, DragOverEvent, DragEndEvent } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
-import type { TierId, TierListState } from '../types';
+import type { TierListState } from '../types';
 import { players } from '../data/players';
 import { findContainer } from '../utils/dndUtils';
 import { useLocalStorage } from './useLocalStorage';
@@ -25,7 +25,7 @@ export function useTierList() {
     return load() ?? createInitialState();
   });
   const [activeId, setActiveId] = useState<string | null>(null);
-  const saveTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const saveTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   // Auto-save with debounce
   useEffect(() => {
