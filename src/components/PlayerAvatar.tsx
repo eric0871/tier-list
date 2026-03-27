@@ -18,7 +18,7 @@ export default function PlayerAvatar({ player, size = 48 }: PlayerAvatarProps) {
   if (player.imageUrl) {
     return (
       <img
-        src={player.imageUrl}
+        src={`${import.meta.env.BASE_URL}${player.imageUrl.replace(/^\//, '')}`}
         alt={player.name}
         className="player-avatar"
         style={{ width: size, height: size, borderRadius: '50%', objectFit: 'cover' }}
